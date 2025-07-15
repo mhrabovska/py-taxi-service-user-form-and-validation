@@ -42,11 +42,8 @@ class DriverViewsTest(TestCase):
     def test_update_driver_license_number_with_valid_data(self):
         test_license_number = "ADM22345"
         response = self.client.post(
-            reverse("taxi:driver-update", kwargs={"pk": self.user.id}),
-            data={"username": self.user.username,
-            "first_name": self.user.first_name,
-            "last_name": self.user.last_name,
-            "license_number": test_license_number,},
+            reverse("taxi:driver-update-license", kwargs={"pk": self.user.id}),
+            data={"license_number": test_license_number},
         )
         self.assertEqual(response.status_code, 302)
 
